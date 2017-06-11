@@ -39,7 +39,7 @@ public class BinarySearchTree {
 	 * 
 	 * @param root
 	 */
-	public static void preOrderNonRecusrsive(TreeNode root) {
+	public static void preOrderNonRecursive(TreeNode root) {
 		if (null == root)
 			return;
 		Stack<TreeNode> s = new Stack<TreeNode>();
@@ -61,7 +61,7 @@ public class BinarySearchTree {
 	}
 	
 	// http://www.geeksforgeeks.org/archives/26086
-	public static void preOrderNonRecusrsiveEnhanced(TreeNode root) {
+	public static void preOrderNonRecursiveEnhanced(TreeNode root) {
 		if (null == root)
 			return;
 		Stack<TreeNode> s = new Stack<TreeNode>();
@@ -76,7 +76,7 @@ public class BinarySearchTree {
 		}
 	}
 	
-	public static void postOrderNonRecusrsive(TreeNode root) {
+	public static void postOrderNonRecursive(TreeNode root) {
 		if (null == root)
 			return;
 		Stack<TreeNode> s = new Stack<TreeNode>();
@@ -260,12 +260,12 @@ public class BinarySearchTree {
 
 		preOrder(root);
 		System.out.println();
-		preOrderNonRecusrsiveEnhanced(root);
+		preOrderNonRecursiveEnhanced(root);
 		System.out.println();
 
 		postOrder(root);
 		System.out.println();
-		postOrderNonRecusrsive(root);
+		postOrderNonRecursive(root);
 		System.out.println();
 
 		inOrder(root);
