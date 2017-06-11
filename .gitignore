@@ -3,3 +3,6 @@
 .settings
 .settings/**
 bin/**
+.idea
+.idea/**
+*.iml

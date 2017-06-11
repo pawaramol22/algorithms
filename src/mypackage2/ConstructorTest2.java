@@ -8,8 +8,7 @@ public class ConstructorTest2 extends ConstructorTest1 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		new ConstructorTest1();
+		//new ConstructorTest1();
 	}
 
 }
