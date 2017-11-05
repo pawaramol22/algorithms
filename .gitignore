@@ -6,3 +6,4 @@ bin/**
 .idea
 .idea/**
 *.iml
+target/**
