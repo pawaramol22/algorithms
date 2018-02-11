@@ -97,7 +97,7 @@ public class BinarySearchTree {
 		}
 	}
 	
-	public static void inOrderNonRecusrsive(TreeNode root) {
+	public static void inOrderNonRecursive(TreeNode root) {
 		if (null == root)
 			return;
 		Stack<TreeNode> s = new Stack<TreeNode>();
@@ -246,31 +246,87 @@ public class BinarySearchTree {
 		if(null == root.right) return root.data;
 		return findMax(root.right);
 	}
+
+	public static TreeNode insert(TreeNode root, int value){
+		if (null == root) {
+			return new TreeNode(value);
+		}
+
+		if (value <= root.data){
+			root.left = insert(root.left, value);
+		}
+		if (value > root.data){
+			root.right = insert(root.right, value);
+		}
+
+		return root;
+	}
+
+    private static boolean isSubtreeGreater(TreeNode root, int value){
+        if (null == root) {
+            return true;
+        }
+
+        if(root.data > value && isSubtreeGreater(root.left, value) && isSubtreeGreater(root.right, value)) {
+            return true;
+        }
+
+        return false;
+    }
+	private static boolean isSubtreeLesser(TreeNode root, int value){
+	    if (null == root) {
+	        return true;
+        }
+
+        if(root.data <= value && isSubtreeLesser(root.left, value) && isSubtreeLesser(root.right, value)) {
+	        return true;
+        }
+
+        return false;
+    }
+
+	public static boolean isBST(TreeNode root) {
+        if (null == root) {
+            return true;
+        }
+
+        if (isSubtreeLesser(root.left, root.data) && isSubtreeGreater(root.right, root.data) && isBST(root.left) && isBST(root.right)) {
+            return true;
+        }
+
+        return false;
+    }
 	
 	public static void main(String[] args) {
-		TreeNode root = new TreeNode(5);
-		root.left = new TreeNode(3);
-		root.right = new TreeNode(7);
-		root.left.left = new TreeNode(2);
-		root.left.right = new TreeNode(4);
-		root.right.left = new TreeNode(6);
-		root.right.right = new TreeNode(9);
-		root.right.right.left = new TreeNode(8);
-		root.right.right.right = new TreeNode(10);
 
+		TreeNode root = insert(null, 5);
+		root = insert(root, 3);
+		root = insert(root, 7);
+		root = insert(root, 2);
+		root = insert(root, 4);
+		root = insert(root, 6);
+		root = insert(root, 9);
+		root = insert(root, 8);
+		root = insert(root, 10);
+
+		System.out.println("Is this Binary Search Tree? " + isBST(root));
+
+		System.out.println("*********** Pre-order traversal *********** ");
 		preOrder(root);
 		System.out.println();
 		preOrderNonRecursiveEnhanced(root);
 		System.out.println();
 
+		System.out.println("*********** Post-order traversal *********** ");
 		postOrder(root);
 		System.out.println();
 		postOrderNonRecursive(root);
 		System.out.println();
 
+		System.out.println("*********** In-order traversal *********** ");
 		inOrder(root);
 		System.out.println();
-		inOrderNonRecusrsive(root);
+		inOrderNonRecursive(root);
 		System.out.println();
 		
 		System.out.println("Min is " + findMin(root));
@@ -304,11 +360,13 @@ public class BinarySearchTree {
 		System.out.println("is subtree " + isSubtree(root, notsubtree));
 		System.out.println("is subtree " + isSubtree(root, null));
 		System.out.println("is subtree " + isSubtree(null, subtree));
-		
+
+        System.out.println("Before deleting 5");
 		preOrder(root);
 		System.out.println();
 		delete(root, 5);
-		preOrder(root);
+        System.out.println("Aftere deleting 5");
+        preOrder(root);
 		System.out.println();
 	}
 

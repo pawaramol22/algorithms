@@ -4,14 +4,11 @@ public class BubbleSort {
 	public static void sort(int[] data) {
 		
 		for(int i = 0; i < data.length - 1; i++) {
-			boolean swapped = false;
 			for(int j = i+1; j < data.length; j++) {
 				if(data[j] < data[i]) {
 					swap(data, j, i);
-					swapped = true;
 				}
 			}
-			if(!swapped) break;
 		}
 	}
 
@@ -34,6 +31,12 @@ public class BubbleSort {
 		sort(data1);
 		for (int j = 0; j < data1.length; j++) {
 			System.out.print(data1[j] + " ");
+		}
+		System.out.println();
+		int[] data2 = { 2, 10, 3, 4, 5, 6};
+		sort(data2);
+		for (int j = 0; j < data2.length; j++) {
+			System.out.print(data2[j] + " ");
 		}
 	}
 
