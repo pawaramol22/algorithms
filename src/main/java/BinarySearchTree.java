@@ -1,3 +1,5 @@
+import java.util.List;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -296,7 +298,26 @@ public class BinarySearchTree {
 
         return false;
     }
-	
+
+    public static List<Integer> bfs(TreeNode root){
+	    Queue<TreeNode> queue = new LinkedList<TreeNode>();
+	    queue.add(root);
+
+	    List<Integer> result = new ArrayList<Integer>();
+
+	    while(!queue.isEmpty()){
+            TreeNode node = queue.poll();
+	        System.out.print(node.data + " ");
+	        result.add(node.data);
+	        if (null != node.left)
+	            queue.add(node.left);
+	        if (null != node.right)
+	            queue.add(node.right);
+        }
+
+        return result;
+    }
+
 	public static void main(String[] args) {
 
 		TreeNode root = insert(null, 5);
@@ -309,7 +330,9 @@ public class BinarySearchTree {
 		root = insert(root, 8);
 		root = insert(root, 10);
 
-		System.out.println("Is this Binary Search Tree? " + isBST(root));
+        System.out.println("*********** BFS traversal *********** ");
+        bfs(root);
+        System.out.println();
 
 		System.out.println("*********** Pre-order traversal *********** ");
 		preOrder(root);
@@ -346,20 +369,6 @@ public class BinarySearchTree {
 		System.out.println("Are same : " + areSame(root, clone));
 		preOrder(clone);
 		System.out.println();
-	
-		TreeNode subtree = clone(root);
-		subtree.right.right = new TreeNode(9);
-		subtree.right.right.left = new TreeNode(8);
-		subtree.right.right.right = new TreeNode(10);
-		
-		TreeNode notsubtree = clone(root);
-		notsubtree.right.right = new TreeNode(9);
-		notsubtree.right.right.right = new TreeNode(10);
-		
-		System.out.println("is subtree " + isSubtree(root, subtree));
-		System.out.println("is subtree " + isSubtree(root, notsubtree));
-		System.out.println("is subtree " + isSubtree(root, null));
-		System.out.println("is subtree " + isSubtree(null, subtree));
 
         System.out.println("Before deleting 5");
 		preOrder(root);
