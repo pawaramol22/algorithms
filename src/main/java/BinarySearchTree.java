@@ -99,10 +99,11 @@ public class BinarySearchTree {
 		}
 	}
 	
-	public static void inOrderNonRecursive(TreeNode root) {
+	public static List<Integer> inOrderNonRecursive(TreeNode root) {
 		if (null == root)
-			return;
+			return new ArrayList<Integer>(0);
 		Stack<TreeNode> s = new Stack<TreeNode>();
+		List<Integer> result = new ArrayList<Integer>();
 		while(true) {
 			if(null != root) {
 				s.push(root);
@@ -111,12 +112,15 @@ public class BinarySearchTree {
 				if(!s.isEmpty()) {
 					root = s.pop();
 					System.out.print(root.data + " ");
+                    result.add(root.data);
 					root = root.right;
 				} else {
 					break;
 				}
 			}
 		}
+
+		return result;
 	}
 
 	public static TreeNode delete(TreeNode p, int toDelete) {

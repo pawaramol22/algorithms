@@ -51,6 +51,28 @@ public class BinarySearchTreeTest {
     }
 
     @Test
+    public void test_inOrderNonRecursive(){
+
+        List<Integer> result = BinarySearchTree.inOrderNonRecursive(root);
+
+        // 2 3 4 5 6 7 8 9 10
+        List<Integer> expected = new ArrayList<Integer>();
+        expected.add(2);
+        expected.add(3);
+        expected.add(4);
+        expected.add(5);
+        expected.add(6);
+        expected.add(7);
+        expected.add(8);
+        expected.add(9);
+        expected.add(10);
+
+        for(int i = 0; i < result.size(); i++) {
+            Assert.assertEquals(expected.get(i), result.get(i));
+        }
+    }
+
+    @Test
     public void test_isBST(){
         Assert.assertEquals(true, BinarySearchTree.isBST(root));
     }

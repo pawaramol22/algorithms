@@ -38,4 +38,19 @@ public class StringUtils {
 
         return true;
     }
+
+    public static String reverse(String str){
+        if (null == str)
+            return str;
+
+        char[] arr = str.toCharArray();
+
+        for(int i = 0, j = str.length() - 1; i < arr.length / 2; i++, j--){
+            char temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+
+        return String.copyValueOf(arr);
+    }
 }

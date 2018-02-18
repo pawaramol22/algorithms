@@ -18,4 +18,12 @@ public class StringUtilsTest {
         Assert.assertFalse(StringUtils.isPalindromeIgnoreWhitespaces("race a car"));
 
     }
+
+    @Test
+    public void test_reverse(){
+        Assert.assertEquals("rawaploma", StringUtils.reverse("amolpawar"));
+        Assert.assertEquals("hsay", StringUtils.reverse("yash"));
+        Assert.assertNull(StringUtils.reverse(null));
+
+    }
 }
