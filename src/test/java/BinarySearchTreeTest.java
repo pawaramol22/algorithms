@@ -30,6 +30,11 @@ public class BinarySearchTreeTest {
     }
 
     @Test
+    public void test_maxDepth(){
+        Assert.assertEquals(4, BinarySearchTree.maxDepth(root));
+    }
+
+    @Test
     public void test_bfs(){
 
         List<Integer> result = BinarySearchTree.bfs(root);
