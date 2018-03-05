@@ -105,4 +105,47 @@ public class LinkedListUtils {
         return _node1;
     }
 
+    public static Node findReferenceIntersection(Node node1, Node node2) {
+        if (null == node1 || null == node2) {
+            return null;
+        }
+
+        int size1 = 1;
+        Node temp1 = node1;
+
+        while (null != temp1.next) {
+            size1++;
+            temp1 = temp1.next;
+        }
+
+        int size2 = 1;
+        Node temp2 = node2;
+        while (null != temp2.next) {
+            size2++;
+            temp2 = temp2.next;
+        }
+
+        // If ends of lists are not same there is no intersection
+        if (temp1 != temp2) {
+            return null;
+        }
+
+        Node bigger = size1 >= size2 ? node1 : node2;
+        Node smaller = size1 < size2 ? node1 : node2;
+
+        int diff = Math.abs(size1 - size2);
+
+        while (diff > 0) {
+            bigger = bigger.next;
+            diff--;
+        }
+
+        while (bigger != smaller) {
+            bigger = bigger.next;
+            smaller = smaller.next;
+        }
+
+        return bigger;
+
+    }
 }

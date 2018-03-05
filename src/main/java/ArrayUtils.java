@@ -1,4 +1,4 @@
-public class ArrayTest {
+public class ArrayUtils {
 
 	// return occurrences of number in sorted array allowing duplicates
 	// Use modified binary search
@@ -86,7 +86,28 @@ public class ArrayTest {
 		
 		return secondMax;
 	}
-	
+
+
+	public static int[] rotate(int[] array, int rotateBy){
+		if (array.length == 0) {
+			return array;
+		}
+
+		for(int i = 0; i < rotateBy; i++){
+			rotate(array);
+		}
+		return array;
+	}
+
+	private static void rotate(int[] array){
+
+		int temp = array[0];
+		for(int i = 1; i < array.length; i++){
+			array[i-1] = array[i];
+		}
+		array[array.length - 1] = temp;
+	}
+
 	/**
 	 * @param args
 	 */

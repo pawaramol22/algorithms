@@ -52,6 +52,7 @@ public class LinkedListUtilsTest {
         Assert.assertEquals(1, n.next.next.next.data);
         Assert.assertEquals(null, n.next.next.next.next);
     }
+
     @Test
     public void test_findIntersection(){
         Node n1 = new Node(1);
@@ -93,6 +94,49 @@ public class LinkedListUtilsTest {
         Assert.assertNull(result1);
 
         Node result2 = LinkedListUtils.findIntersection(n1, null);
+        Assert.assertNull(result2);
+
+    }
+
+    @Test
+    public void test_findReferenceIntersection(){
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
+        Node n4 = new Node(4);
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+
+        Node n11 = new Node(5);
+        Node n12 = new Node(6);
+        Node n13 = new Node(7);
+        n11.next = n12;
+        n12.next = n13;
+        n13.next = n3;
+
+        Node n = LinkedListUtils.findReferenceIntersection(n1, n11);
+
+        Assert.assertNotNull(n);
+        Assert.assertEquals(n3, n);
+    }
+
+    @Test
+    public void test_findReferenceIntersection_No_intersection(){
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
+        Node n4 = new Node(4);
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+
+        Node n11 = new Node(5);
+
+        Node result1 = LinkedListUtils.findReferenceIntersection(n1, n11);
+        Assert.assertNull(result1);
+
+        Node result2 = LinkedListUtils.findReferenceIntersection(n1, null);
         Assert.assertNull(result2);
 
     }
