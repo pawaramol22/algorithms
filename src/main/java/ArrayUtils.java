@@ -108,6 +108,46 @@ public class ArrayUtils {
 		array[array.length - 1] = temp;
 	}
 
+	public static int[] mergeSortedArrays(int[] arr1, int[] arr2){
+		if(null == arr1 || 0 == arr1.length){
+			return arr2;
+		}
+
+		if(null == arr2 || 0 == arr2.length) {
+			return arr1;
+		}
+
+		int length1 = arr1.length;
+		int length2 = arr2.length;
+
+		int[] result = new int[length1 + length2];
+		int i = 0, j = 0, k =0;
+		for(; i < length1 && j < length2; ){
+			if(arr1[i] <= arr2[j]){
+				result[k] = arr1[i];
+				i++;
+			} else {
+				result[k] = arr2[j];
+				j++;
+			}
+			k++;
+		}
+
+		while(i < length1){
+			result[k] = arr1[i];
+			k++;
+			i++;
+		}
+
+		while(j < length2){
+			result[k] = arr2[j];
+			k++;
+			j++;
+		}
+
+		return result;
+	}
+
 	/**
 	 * @param args
 	 */

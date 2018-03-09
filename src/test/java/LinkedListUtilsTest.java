@@ -140,4 +140,29 @@ public class LinkedListUtilsTest {
         Assert.assertNull(result2);
 
     }
+
+    @Test
+    public void test_checkCircularLinkedList(){
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
+        Node n4 = new Node(4);
+        Node n5 = new Node(5);
+        Node n6 = new Node(6);
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = n5;
+        n5.next = n6;
+        n6.next = n3;
+
+        Node actual = LinkedListUtils.checkCircularLinkedList(n1);
+        Assert.assertEquals(actual, n3);
+
+        Assert.assertNull(LinkedListUtils.checkCircularLinkedList(null));
+
+        n6.next = null;
+        Assert.assertNull(LinkedListUtils.checkCircularLinkedList(n1));
+
+    }
 }

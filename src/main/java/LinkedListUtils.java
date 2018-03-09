@@ -146,6 +146,55 @@ public class LinkedListUtils {
         }
 
         return bigger;
+    }
 
+    /**
+     * Find if linkedlist has circle and then return beginning of the loop.
+     *
+     * @param head
+     * @return
+     */
+    public static Node checkCircularLinkedList(Node head) {
+        if(null == head){
+            return null;
+        }
+
+        Node slow = head;
+        Node fast = head;
+
+        // Start with slow (one step) and fast (two steps) pointer and exit at meeting point
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast){
+                break;
+            }
+        }
+
+        // if there is no loop fast pointer is reached at the end of list
+        if(null == fast || null == fast.next) return null;
+
+        // move slow pointer back to the head and traverse both pointer one step at a time, exit at a meeting point
+        // which is beginning of the loop in linkedlist
+        slow = head;
+        while(slow != fast){
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return slow;
+    }
+
+    public Node mergeTwoLinkedLists(Node l1, Node l2) {
+        if(null == l1) {
+            return l2;
+        }
+        if(null == l2){
+            return l1;
+        }
+
+        Node result = null;
+
+        return result;
     }
 }
