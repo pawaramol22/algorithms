@@ -14,7 +14,7 @@ public class LinkedListUtilsTest {
     }
 
     @Test
-    public void test_reverseResursive() {
+    public void test_reverseRecursive() {
         Node n1 = new Node(1);
         Node n2 = new Node(2);
         Node n3 = new Node(3);
@@ -23,7 +23,7 @@ public class LinkedListUtilsTest {
         n2.next = n3;
         n3.next = n4;
 
-        Node n = LinkedListUtils.reverseResursive(n1);
+        Node n = LinkedListUtils.reverseRecursive(n1);
 
         Assert.assertNotNull(n);
         Assert.assertEquals(4, n.data);
@@ -43,7 +43,7 @@ public class LinkedListUtilsTest {
         n2.next = n3;
         n3.next = n4;
 
-        Node n = LinkedListUtils.reverseNonResursive(n1);
+        Node n = LinkedListUtils.reverseNonRecursive(n1);
 
         Assert.assertNotNull(n);
         Assert.assertEquals(4, n.data);

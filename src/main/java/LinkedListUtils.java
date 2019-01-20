@@ -6,12 +6,12 @@ public class LinkedListUtils {
      * @param node
      * @return reversed linked list head node
      */
-    public static Node reverseResursive(Node node) {
+    public static Node reverseRecursive(Node node) {
         if (null == node || null == node.next) {
             return node;
         }
 
-        Node reversedNode = reverseResursive(node.next);
+        Node reversedNode = reverseRecursive(node.next);
         node.next.next = node;
         node.next = null;
 
@@ -24,7 +24,7 @@ public class LinkedListUtils {
      * @param node
      * @return reversed linked list head node
      */
-    public static Node reverseNonResursive(Node node) {
+    public static Node reverseNonRecursive(Node node) {
         if (null == node || null == node.next) {
             return node;
         }
