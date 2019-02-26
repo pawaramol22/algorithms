@@ -2,6 +2,10 @@ package mypackage2;
 
 public class ConstructorTest4 {
 
+	public ConstructorTest4(){
+		System.out.println("Default Constructor of ConstructorTest4");
+	}
+
 	/**
 	 * @param args
 	 */
